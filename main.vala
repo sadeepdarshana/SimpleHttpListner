@@ -3,23 +3,23 @@ using Gtk;
 public class GuiApp : Gtk.Application {
 
 	public GuiApp () {
-		Object (application_id: "org.sadeep.comapp");
+		Object (application_id: "org.sadeep.comclient");
 	}
 
 	public override void activate () {
 
 		var window = new Gtk.Window ();
-		window.title = "Welcome to GNOME";
+		window.title = "Com Client";
 
+		window.set_default_size (700, 300);
+		window.window_position = Gtk.WindowPosition.CENTER;
+		window.border_width = 10;
 
-		//window.border_width = 10;
-		//window.set_default_size (350, 70);
-		//window.window_position = Gtk.WindowPosition.CENTER;
+		var button = new Gtk.Button.with_label ("Send");
+		button.show();
+		window.add(button);
 
-		/* Add the window to this application. */
 		this.add_window (window);
-
-		/* Show the window. */
 		window.show ();
 	}
 }
