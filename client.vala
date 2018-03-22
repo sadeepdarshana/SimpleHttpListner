@@ -29,6 +29,8 @@ public class GuiApp : Gtk.Application {
 
 	private void send(){
 		stdout.printf("initiating...");
+
+		Thread.usleep(5000000);
 		
 		var resolver = Resolver.get_default ();
         var addresses = resolver.lookup_by_name (host, null);
@@ -47,16 +49,41 @@ public class GuiApp : Gtk.Application {
 }
 
 
+void server(){
+
+    try {
+        var service = new SocketService ();
+        service.add_inet_port (8080, null);
+        service.start ();
+        while (true) {
+            var conn = service.accept (null);
+            process_request (conn.input_stream, conn.output_stream);
+        }
+    } catch (Error e) {
+        stderr.printf ("%s\n", e.message);
+    }
+    return;
+}
+void process_request (InputStream input, OutputStream output) throws Error {
+    var data_in = new DataInputStream (input);
+    string line;
+    while ((line = data_in.read_line (null)) != null) {
+        stdout.printf ("%s\n", line);
+        if (line.strip () == "") break;
+    }
+
+}
 
 
 class Main : GLib.Object {
 
     public static int main(string[] args) {
 
-        stdout.printf("Hello, World\n");
-        new GuiApp().run();
-        return 0;
 
-        
+		Thread.create<void> (server, true);
+
+        new GuiApp().run();
+		
+		return 0;
     }
 }
