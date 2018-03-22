@@ -43,6 +43,7 @@
               <object class="GtkEntry" id="domaintext">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">domain name or IP of the recipient</property>
                 <property name="text" translatable="yes">darshanasadeep.com</property>
                 <property name="placeholder_text" translatable="yes">remote domain</property>
               </object>
@@ -56,8 +57,11 @@
               <object class="GtkEntry" id="porttext">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="tooltip_text" translatable="yes">port of the recipient</property>
+                <property name="margin_left">10</property>
                 <property name="text" translatable="yes">5046</property>
                 <property name="placeholder_text" translatable="yes">port</property>
+                <property name="input_purpose">number</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -95,12 +99,36 @@
             <property name="can_focus">True</property>
             <property name="margin_top">42</property>
             <property name="truncate_multiline">True</property>
-            <property name="placeholder_text" translatable="yes">Listening on port 5046, Recieved messages will appear here</property>
+            <property name="placeholder_text" translatable="yes">listening... Recieved messages will appear here</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_top">15</property>
+            <child>
+              <object class="GtkLabel" id="listenportlabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">label</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>

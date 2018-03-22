@@ -5,7 +5,9 @@ delegate void displayMessage (string msg);
 
 private static displayMessage guiAppDisplayMessage;
 
-public int listenPort = 5046;
+private int listenPort = 5046;
+private Label listenPortLabel;
+
 
 
 public class GuiApp : Gtk.Application {
@@ -17,7 +19,6 @@ public class GuiApp : Gtk.Application {
 	private Entry receiveText;
 	private Entry domainText;
 	private Entry portText;
-
 	public GuiApp () {
 		Object (application_id: "org.sadeep.comclient");
 		guiAppDisplayMessage = displayMsg;
@@ -35,6 +36,10 @@ public class GuiApp : Gtk.Application {
 		receiveText = builder.get_object ("receivetext") as Entry;
 		domainText = builder.get_object ("domaintext") as Entry;
 		portText = builder.get_object ("porttext") as Entry;
+		listenPortLabel = builder.get_object ("listenportlabel") as Label;
+
+
+		listenPortLabel.set_label("Listening to port "+listenPort.to_string()+" .....");
 
 		sendButton.clicked.connect(send);
 
@@ -61,6 +66,7 @@ public class GuiApp : Gtk.Application {
 		print ("Wrote request\n");
 		
 	}
+
 
 	public void displayMsg(string msg){
 		receiveText.set_text (msg);
@@ -101,11 +107,19 @@ void process_request (InputStream input, OutputStream output) throws Error {
 class Main : GLib.Object {
 
     public static int main(string[] args) {
+		
+		listenPort = 0;
+		try{
+			if(args.length>=2)listenPort = int.parse(args[1]);
+		}
+		catch(Error e){
+			listenPort = 0;
+		}
+
+		if(listenPort == 0)listenPort = 5046;
 
 
 		Thread.create<void> (server, true);
-		//server();
-
         new GuiApp().run();
 		
 		return 0;
