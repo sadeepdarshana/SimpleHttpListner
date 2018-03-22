@@ -13,14 +13,14 @@ private Label listenPortLabel;
 public class GuiApp : Gtk.Application {
 
 
-	public string host = "hell";
+	public string host = "";
 
 	private Entry sendText;
 	private Entry receiveText;
 	private Entry domainText;
 	private Entry portText;
 	public GuiApp () {
-		Object (application_id: "org.sadeep.comclient");
+		Object (application_id: "org.sadeep.tcpserverclient");
 		guiAppDisplayMessage = displayMsg;
 	}
 
@@ -29,7 +29,7 @@ public class GuiApp : Gtk.Application {
 
 
 		Builder builder = new Builder();
-		builder.add_from_file ("client.ui");
+		builder.add_from_file ("tcpserverclient.ui");
 		var window = builder.get_object ("mainwindow") as ApplicationWindow;
 		var sendButton = builder.get_object ("sendbutton") as Button;
 		sendText = builder.get_object ("sendtext") as Entry;
