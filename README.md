@@ -5,6 +5,8 @@ You can pass text messages between 2 machines using the application.
 
 Created using Gtk+3.0 and Vala. Utilizes `SocketClient` and `SocketService` in `GIO`.
 
+![screenshots](http://darshanasadeep.com/tcpss.png)
+
 ## Installation
 
 #### Prerequisites :-
