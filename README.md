@@ -1,11 +1,26 @@
-## TCPServerClient
+# TCPServerClient
 A GUI TCP server and a client built into a single application. 
 
 You can pass text messages between 2 machines using the application.
 
 Created using Gtk+3.0 and Vala. Utilizes `SocketClient` and `SocketService` in `GIO`.
 
-### Usage
+## Installation
+
+#### Prerequisites :-
+
+valac
+
+libgtk-3-dev
+
+#### Building and running
+
+      git clone https://github.com/sadeepdarshana/TCPServerClient.git
+      cd TCPServerClient
+      valac ./tcpserverclient.vala --pkg gtk+-3.0
+      ./tcpserverclient
+
+## Usage
 
 For sending messages or listen on the default port (5046) run the application using,
 
@@ -23,14 +38,3 @@ Enter remote IP or Domain name, enter remote port, message. Then send.
 #### Listening for Messages
 
 You don't have to do anything. The application will from the start be listening (and displaying) to the messages received on the chosen (or default=5046) port.
-
-
-### Installation
-
-#### Prerequisites
-
-Vala
-
-libgtk-3-dev
-
-#### Building and running
