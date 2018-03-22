@@ -6,3 +6,9 @@ svr
 \#client\.ui#
 
 client\.ui~
+
+com
+
+com_binaries\.tar\.xz
+
+client
