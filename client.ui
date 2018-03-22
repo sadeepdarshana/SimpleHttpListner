@@ -25,6 +25,7 @@
           <object class="GtkEntry" id="sendtext">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="truncate_multiline">True</property>
             <property name="placeholder_text" translatable="yes">Text to send</property>
           </object>
           <packing>
@@ -88,11 +89,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="recievetext">
+          <object class="GtkEntry" id="receivetext">
             <property name="name">recievetext</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="margin_top">42</property>
+            <property name="truncate_multiline">True</property>
             <property name="placeholder_text" translatable="yes">Listening on port 5046, Recieved messages will appear here</property>
           </object>
           <packing>
