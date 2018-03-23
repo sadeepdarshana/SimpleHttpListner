@@ -40,3 +40,5 @@ Enter remote IP or Domain name, enter remote port, message. Then send.
 #### Listening for Messages
 
 You don't have to do anything. The application will from the start be listening (and displaying) to the messages received on the chosen (or default=5046) port.
+
+You could send messages to the localhost at the listening port to see the same message captured by the application.
